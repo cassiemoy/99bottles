@@ -1,14 +1,20 @@
 class Bottles
-  def verse(count)
-    new_count = count - 1
-    
+  def verse(count)  
     first_line =  "#{quantitative_adjective(count)} #{pluralize_bottles(count)} of beer on the wall, #{quantitative_adjective(count)} #{pluralize_bottles(count)} of beer.\n"
     
-    second_line = "Take #{pronoun(count)} down and pass it around, #{quantitative_adjective(new_count)} #{pluralize_bottles(new_count)} of beer on the wall.\n"
+    second_line = get_second_line(count)
 
     [first_line, second_line].map(&:capitalize).join
   end
 
+  def get_second_line(count)
+    if count == 0
+      "Go to the store and buy some more, 99 bottles of beer on the wall.\n"
+    else
+      "Take #{pronoun(count)} down and pass it around, #{quantitative_adjective(count - 1)} #{pluralize_bottles(count - 1)} of beer on the wall.\n"
+    end
+  end
+  
   def pronoun(count)
     count == 1 ? "it" : "one"
   end
