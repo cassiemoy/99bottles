@@ -2,10 +2,11 @@ class Bottles
   def verse(count)
     new_count = count - 1
     
-    <<~VERSE
-      #{count} #{pluralize_bottles(count)} of beer on the wall, #{count} #{pluralize_bottles(count)} of beer.
-      Take #{pronoun(count)} down and pass it around, #{quantitative_adjective(new_count)} #{pluralize_bottles(new_count)} of beer on the wall.
-    VERSE
+    first_line =  "#{quantitative_adjective(count)} #{pluralize_bottles(count)} of beer on the wall, #{quantitative_adjective(count)} #{pluralize_bottles(count)} of beer.\n"
+    
+    second_line = "Take #{pronoun(count)} down and pass it around, #{quantitative_adjective(new_count)} #{pluralize_bottles(new_count)} of beer on the wall.\n"
+
+    [first_line, second_line].map(&:capitalize).join
   end
 
   def pronoun(count)
