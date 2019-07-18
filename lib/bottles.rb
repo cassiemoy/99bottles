@@ -1,4 +1,20 @@
 class Bottles
+  def song
+    verses(99, 0)
+  end
+
+  def verses(beginning, ending)
+    verses = []
+    round = beginning
+    
+    while round >= ending do
+      verses << verse(round)
+      round = round - 1
+    end
+
+    verses.join("\n")
+  end
+
   def verse(count)  
     first_line =  "#{quantitative_adjective(count)} #{pluralize_bottles(count)} of beer on the wall, #{quantitative_adjective(count)} #{pluralize_bottles(count)} of beer.\n"
     
