@@ -5,11 +5,9 @@ class Bottles
 
   def verses(beginning, ending)
     verses = []
-    round = beginning
     
-    while round >= ending do
+    beginning.downto(ending) do |round|
       verses << verse(round)
-      round = round - 1
     end
 
     verses.join("\n")
